@@ -31,7 +31,7 @@ class Wedevs_Fm_admin_plugin_settings{
             /* capability */
             'manage_options',
             /* menu slug */
-            'fm-admin-plugin-settings',
+            'fm_admin_plugin_settings',
             /* callback function */
             [$this, 'admin_plugin_settings_page_fm'],
             /* icon */
@@ -41,7 +41,7 @@ class Wedevs_Fm_admin_plugin_settings{
         );
         add_submenu_page(
 			/* parent menu slug */
-			'fm-admin-plugin-settings',
+			'fm_admin_plugin_settings',
 			/* page title */
 			'QR Code Settings',
 			/* menu title */
@@ -73,6 +73,10 @@ class Wedevs_Fm_admin_plugin_settings{
      * @since 1.0.0
      */
     public function admin_enqueue_scripts( $hook ) {
+
+        if( 'toplevel_page_fm_admin_plugin_settings' !== $hook ) {
+            return;
+        }
         /**
          * Get the asset data from the main.asset.php file.
          *
